@@ -1,0 +1,41 @@
+<!-- include a-frame -->
+<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@00d0a6502df911702bfeab8d7a23b6b848ba4eb9/dist/aframe-master.min.js"></script>
+
+<!-- include ar.js for aframe -->
+<script src='AR.js/aframe/build/aframe-ar.js'></script>
+<script>ARjs.Context.baseURL = 'AR.js/three.js/'</script>
+<script src="/js/inflate.min.js"></script>
+
+<script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.0/dist/aframe-extras.min.js"></script>
+<script src="js/components.js"></script>
+<!-- start the body of your page -->
+<body style='margin : 0px; overflow: hidden;'>
+	<div style="position: absolute; top:0; background: rgba(0,0,0,0.2); padding: 2% 5%; display: table; font-size: 2rem">
+		<h3>Pattern: <a href="https://stemkoski.github.io/AR-Examples/markers/hiro.png"><img style="width: 50px; height: 50px;" src="https://stemkoski.github.io/AR-Examples/markers/hiro.png" alt=""></a> </h3>
+		<h3>Play/Change animations: Click model's head</h3>
+		<h3>Stop Animations: Space</h3>
+		<h3>Animation List:</h3>
+		<ul>
+			<li>Swag</li>
+			<li>Explain 1</li>
+			<li>Explain 2</li>
+		</ul>
+	</div>
+	<!-- Define your 3d scene and enabled ar.js -->
+	<a-scene embedded arjs='trackingMethod: best;'>
+		<a-assets>
+			<a-asset-item id="violet" src="assets/Violet.glb">
+		</a-assets>
+		<!-- Create a anchor to attach your augmented reality -->
+		<a-marker preset='hiro' markerhandler emitevents="true" cursor="fuse: false; rayOrigin: mouse" id="animated-marker">
+			<a-entity light="intensity: 1.58" rotation="0.64 -1.41 0" scale="" position="-4.355483232679884 -8.488336847646563 0.5024741508608701" visible=""></a-entity>
+			<a-entity light="intensity: 1.58" rotation="0.64 -1.41 0" scale="" position="2.392616369942098 8.091174834047841 0.058700763611592266" visible=""></a-entity>
+			<a-entity light="intensity: 1.58" rotation="0.64 -1.41 0" scale="" position="-0.2904020093445325 0.09218809776753399 -5.85005520364109" visible=""></a-entity>
+			<a-gltf-model                 id="animated-model"
+			src="#violet" scale="0.3 0.3 0.3" rotation="270 0 0" animation-mixer="clip: none; crossFadeDuration: 0.5" >
+			</a-gltf-model>
+		</a-marker>
+		<!-- Define a static camera -->
+		<a-camera-static/>
+	</a-scene>
+</body>
